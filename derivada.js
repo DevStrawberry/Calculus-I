@@ -14,9 +14,9 @@ for (let i = 0; i < n; i++) {
 }
 
 console.log("\nFunção original:");
-for (let i = 0; i < n; i++) {
-    console.log(`Termo ${i + 1}: coef = ${funcao[i][0]}, exp = ${funcao[i][1]}`); 
-}
+funcao.forEach((termo, i) => {
+    console.log(`Termo ${i + 1}: coef = ${termo[0]}, exp = ${termo[1]}`);  
+});
 
 // Derivada de potencia
 function derivada(funcao) {
