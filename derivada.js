@@ -39,7 +39,7 @@ if (n === 1) { // Se a função tiver apenas um termo
         ptoCritico = "Todos os valores de x (função constante)";
     } else if (exp > 0) {
         ptoCritico = 0;
-    } else if (exp < 0) {
+    } else {
         ptoCritico = "Nenhum (derivada nunca zera)";
     }
 }
