@@ -20,26 +20,17 @@ for (let i = 0; i < n; i++) {
 
 // Derivada de potencia
 function derivada(funcao) {
-    for (let i = 0; i < n; i++) {
-        if (funcao[i][1] != 0) {
-            let exp = funcao[i][1];
-            funcao[i][1] = funcao[i][1] - 1;
-            funcao[i][0] = exp * funcao[i][0];
-        } else {
-            funcao[i][0] = 0;
-            funcao[i][1] = 0;
-        }
-    }
+    return funcao.map(([coef, exp]) => {
+        return exp === 0 ? [0, 0] : [coef * exp, exp - 1];
+    });
 }
 
-derivada(funcao); // Primeira derivada
+let primeiraDerivada = derivada(funcao);
 
 console.log("\nPrimeira derivada da função:");
-for (let i = 0; i < n; i++) {
-    console.log(`Termo ${i + 1}: coef = ${funcao[i][0]}, exp = ${funcao[i][1]}`); 
-}
-
-derivada(funcao); // Segunda derivada
+primeiraDerivada.forEach((termo, i) => {
+    console.log(`Termo ${i + 1}: coef = ${termo[0]}, exp = ${termo[1]}`);  
+});
 
 let ptoCritico = null;
 if (n === 1) { // Se a função tiver apenas um termo 
@@ -54,7 +45,9 @@ if (n === 1) { // Se a função tiver apenas um termo
 }
 console.log(`\nPonto crítico: ${ptoCritico}`);
 
+let segundaDerivada = derivada(primeiraDerivada);
+
 console.log("\nSegunda derivada da função:");
-for (let i = 0; i < n; i++) {
-    console.log(`Termo ${i + 1}: coef = ${funcao[i][0]}, exp = ${funcao[i][1]}`); 
-}
+segundaDerivada.forEach((termo, i) => {
+    console.log(`Termo ${i + 1}: coef = ${termo[0]}, exp = ${termo[1]}`);  
+});
