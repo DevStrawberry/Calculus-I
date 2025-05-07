@@ -77,7 +77,7 @@ def avaliar(funcao, x):
             resultado += termo["coeficiente"] * (termo["base"] ** x)
     return resultado
 
-def encontrar_pontos_criticos(derivada_funcao, inicio=-10, fim=10, passo=0.01, tolerancia=1e-3):
+def encontrar_pontos_criticos(derivada_funcao, inicio=-10, fim=10, passo=0.001, tolerancia=1e-8):
     pontos_criticos = []
     x = inicio
     y_anterior = avaliar(derivada_funcao, x)
