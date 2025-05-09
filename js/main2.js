@@ -1,6 +1,6 @@
 const prompt = require("prompt-sync")();
 
-let qtdFuncao = prompt("Digite a quantidade de funções a serem avaliadas: ");
+let qtdFuncao = parseInt(prompt("Digite a quantidade de funções a serem avaliadas: "));
 
 function nova_funcao() {
 
@@ -30,11 +30,12 @@ function nova_funcao() {
     }
                     
     termos.push(funcao.slice(inicio));
-    console.log("Termos:", termos);
     return termos;
 }
 
 let funcoes = [];
 for (let i = 0; i < qtdFuncao; i++) {
-    funcoes.push(nova_funcao());          
+    const termos = nova_funcao();
+    funcoes.push(termos);          
+    console.log(`Termos da ${i + 1}º função:`, termos);
 }
