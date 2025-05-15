@@ -44,7 +44,6 @@ function derivadaString(termosStr) {
         return `Não reconhecido: ${termo}`;
     }
 
-
     return termosStr.flatMap((termoOriginal) => {
         let termo = termoOriginal.trim();
         let sinal = 1;
