@@ -1,20 +1,19 @@
 const prompt = require("prompt-sync")();
-const derivadaString = require("./funcoes/derivada.js");
+const { derivadaString, formatarDerivada } = require("./funcoes/derivada.js");
 
 let qtdFuncao = parseInt(prompt("Digite a quantidade de funções a serem avaliadas: "));
 
 function nova_funcao() {
-
     console.log("Função de exemplo: f(x) = 5x^2 - (2x - e^x)");
     let funcao = prompt("Entre com a função: f(x) = ");
-    funcao = funcao.replace(/\s+/g, ''); // Remove todos os espaços da função
+    funcao = funcao.replace(/\s+/g, ''); // Remove espaços
 
     let termos = [];
     let inicio = 0;
     let dentro_parenteses = 0;
 
     for (let i = 1; i < funcao.length; i++) {
-        switch(funcao[i]) {
+        switch (funcao[i]) {
             case '(':
                 dentro_parenteses++;
                 break;
@@ -30,7 +29,7 @@ function nova_funcao() {
                 break;
         }
     }
-                    
+
     termos.push(funcao.slice(inicio));
     return termos;
 }
@@ -38,10 +37,15 @@ function nova_funcao() {
 let funcoes = [];
 for (let i = 0; i < qtdFuncao; i++) {
     const termos = nova_funcao();
-    funcoes.push(termos);          
+    funcoes.push(termos);
 
     console.log(`Termos da ${i + 1}º função:`, termos);
 
     const derivada = derivadaString(termos);
-    console.log(`f'(x) = ${derivada.join(' + ').replace(/\+\s-\s/g, '- ')}`);
+    const derivadaFormatada = formatarDerivada(derivada);
+    console.log(`Primeira derivada: f'(x) = ${derivadaFormatada}`);
+
+    const segunda_derivada = derivadaString(derivada);
+    const segundaDerivadaFormatada = formatarDerivada(segunda_derivada);
+    console.log(`Segunda derivada: f''(x) = ${segundaDerivadaFormatada}`);
 }
