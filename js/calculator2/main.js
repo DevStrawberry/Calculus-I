@@ -1,5 +1,9 @@
 const prompt = require("prompt-sync")();
 const { derivadaString, formatarDerivada } = require("./funcoes/derivada.js");
+const {  
+    encontrar_pontos_criticos, 
+    classificar_ponto_critico 
+} = require("./funcoes/ponto_critico.js");
 
 let qtdFuncao = parseInt(prompt("Digite a quantidade de funções a serem avaliadas: "));
 
@@ -39,8 +43,10 @@ for (let i = 0; i < qtdFuncao; i++) {
     const termos = nova_funcao();
     funcoes.push(termos);
 
-    console.log(`Termos da ${i + 1}º função:`, termos);
+    console.log(`\n===== Análise da ${i + 1}º função =====`);
+    console.log(`Termos:`, termos);
 
+    // Derivadas
     const derivada = derivadaString(termos);
     const derivadaFormatada = formatarDerivada(derivada);
     console.log(`Primeira derivada: f'(x) = ${derivadaFormatada}`);
@@ -48,4 +54,14 @@ for (let i = 0; i < qtdFuncao; i++) {
     const segunda_derivada = derivadaString(derivada);
     const segundaDerivadaFormatada = formatarDerivada(segunda_derivada);
     console.log(`Segunda derivada: f''(x) = ${segundaDerivadaFormatada}`);
+
+    // Encontrar pontos críticos
+    const pontos_criticos = encontrar_pontos_criticos(derivada);
+    
+    if (pontos_criticos.length === 0) {
+        console.log("Nenhum ponto crítico encontrado no intervalo [-10, 10].");
+    } else {
+        console.log(`\nPontos críticos encontrados:`);
+        classificar_ponto_critico(termos, pontos_criticos, segunda_derivada);
+    }
 }

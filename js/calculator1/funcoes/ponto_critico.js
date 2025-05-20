@@ -1,14 +1,4 @@
-function avaliar(funcao, x) {
-    let resultado = 0;
-    funcao.forEach(termo => {
-        if (termo.tipo === "polinomial") {
-            resultado += termo.coef * (x ** termo.exp);
-        } else {
-            resultado += termo.coef * (termo.base ** x); 
-        }
-    });
-    return resultado;
-}
+const avaliar = require("./avaliar.js");
 
 function encontrar_ponto_critico_bissecao(primeiraDerivada, inicio, fim, tolerancia = 1e-8, max_iteracoes = 100) {
     let a = inicio;
@@ -81,7 +71,6 @@ function encontrar_pontos_criticos(primeiraDerivada, inicio = -10, fim = 10, gra
 }
 
 module.exports = {
-    avaliar,
     encontrar_pontos_criticos,
     encontrar_ponto_critico_bissecao
 };
