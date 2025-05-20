@@ -103,10 +103,7 @@ function classificar_ponto_critico(funcaoOriginal, pontosCriticos, segundaDeriva
 }
 
 module.exports = {
-    avaliar,
-    avaliarTermo,
     encontrar_pontos_criticos,
     encontrar_ponto_critico_bissecao,
     classificar_ponto_critico,
-    expressaoParaTermos
 };
