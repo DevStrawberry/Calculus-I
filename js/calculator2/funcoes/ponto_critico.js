@@ -1,4 +1,4 @@
-const { avaliar, avaliarTermo, expressaoParaTermos } = require("./avaliar");
+const { avaliar } = require("./avaliar");
 
 // Encontra um ponto crítico usando o método da bissecção
 function encontrar_ponto_critico_bissecao(expressao, inicio, fim, tolerancia = 1e-8, max_iteracoes = 100) {
