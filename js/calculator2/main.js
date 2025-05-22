@@ -8,7 +8,7 @@ const {
 let qtdFuncao = parseInt(prompt("Digite a quantidade de funções a serem avaliadas: "));
 
 function nova_funcao() {
-    console.log("Função de exemplo: f(x) = 5x^2 - (2x - e^x)");
+    console.log("\nFunção de exemplo: f(x) = 5x^2 - (2x - e^x)");
     let funcao = prompt("Entre com a função: f(x) = ");
     funcao = funcao.replace(/\s+/g, ''); // Remove espaços
 
@@ -59,7 +59,7 @@ for (let i = 0; i < qtdFuncao; i++) {
     const pontos_criticos = encontrar_pontos_criticos(derivada);
     
     if (pontos_criticos.length === 0) {
-        console.log("Nenhum ponto crítico encontrado no intervalo [-10, 10].");
+        console.log("Nenhum ponto crítico encontrado no intervalo [-10, 10].\n");
     } else {
         console.log(`\nPontos críticos encontrados:`);
         classificar_ponto_critico(termos, pontos_criticos, segunda_derivada);
