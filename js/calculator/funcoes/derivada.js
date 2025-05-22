@@ -33,7 +33,7 @@ function derivadaString(termosStr) {
 
             return `${coef * sinal}`;
 
-        // Exponencial: ae^x ou ae^(x) - versão melhorada
+        // Exponencial: ae^x ou ae^(x)
         } else if (/^-?\d*\.?\d*e\^/.test(termo)) {
             const match = termo.match(/^(-?\d*\.?\d*)e\^(.*)$/);
             if (!match) return `Não reconhecido: ${termo}`;

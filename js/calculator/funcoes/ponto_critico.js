@@ -1,6 +1,5 @@
 const { avaliar } = require("./avaliar");
 
-// Encontra um ponto crítico usando o método da bissecção
 function encontrar_ponto_critico_bissecao(expressao, inicio, fim, tolerancia = 1e-8, max_iteracoes = 100) {
     let a = inicio;
     let b = fim;
@@ -72,12 +71,10 @@ function encontrar_pontos_criticos(expressao, inicio = -10, fim = 10, granularid
     return pontos_criticos.sort((a, b) => a - b);
 }
 
-// Classifica os pontos críticos
 function classificar_ponto_critico(funcaoOriginal, pontosCriticos, segundaDerivada) {
     let resultado = [];
     
     for (let ponto of pontosCriticos) {
-        // Avaliamos a segunda derivada no ponto crítico
         let valor_segunda_derivada = avaliar(segundaDerivada, ponto);
         let valor_funcao = avaliar(funcaoOriginal, ponto);
         

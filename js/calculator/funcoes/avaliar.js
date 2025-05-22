@@ -1,4 +1,3 @@
-// Função para avaliar um termo matemático
 function avaliarTermo(termo, x) {
     // Polinomial: ax^n
     if (/^-?\d*\.?\d*x\^\d+$/.test(termo)) {
@@ -33,7 +32,6 @@ function avaliarTermo(termo, x) {
     return 0; // Termo não reconhecido
 }
 
-// Função para avaliar uma expressão completa
 function avaliar(expressao, x) {
     // Se a expressão for uma string, convertemos para um array de termos
     let termos = Array.isArray(expressao) ? expressao : expressaoParaTermos(expressao);
