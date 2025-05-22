@@ -8,7 +8,7 @@ const {
 let qtdFuncao = parseInt(prompt("Digite a quantidade de funções a serem avaliadas: "));
 
 function nova_funcao() {
-    console.log("\nFunção de exemplo: f(x) = 5x^2 - (2x - e^x)");
+    console.log("\nFunção de exemplo: f(x) = x^3 - 3x + 2e^x");
     let funcao = prompt("Entre com a função: f(x) = ");
     funcao = funcao.replace(/\s+/g, ''); // Remove espaços
 
