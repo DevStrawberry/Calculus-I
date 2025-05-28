@@ -6,8 +6,6 @@ const {
     classificar_ponto_critico 
 } = require("./funcoes/ponto_critico.js");
 
-let qtdFuncao = parseInt(prompt("Digite a quantidade de funções a serem avaliadas: "));
-
 const tipo = parseInt(prompt("Escolha derivar = 1 ou integrar = 2: "));
 
 if (tipo != 1 && tipo != 2) {
@@ -48,43 +46,39 @@ function nova_funcao() {
 
 let funcoes = [];
 if (tipo === 1) {
-    for (let i = 0; i < qtdFuncao; i++) {
-        const { termos } = nova_funcao();
-        funcoes.push(termos);
-        
-        console.log(`\n===== Análise da ${i + 1}º função =====`);
-        console.log(`Termos:`, termos);
-        
-        // Derivadas
-        const derivada = derivadaString(termos);
-        const derivadaFormatada = formatarDerivada(derivada);
-        console.log(`Primeira derivada: f'(x) = ${derivadaFormatada}`);
-        
-        const segunda_derivada = derivadaString(derivada);
-        const segundaDerivadaFormatada = formatarDerivada(segunda_derivada);
-        console.log(`Segunda derivada: f''(x) = ${segundaDerivadaFormatada}`);
-        
-        // Encontrar pontos críticos
-        const pontos_criticos = encontrar_pontos_criticos(derivada);
-        
-        if (pontos_criticos.length === 0) {
-            console.log("Nenhum ponto crítico encontrado no intervalo [-10, 10].\n");
-        } else {
-            console.log(`\nPontos críticos encontrados:`);
-            classificar_ponto_critico(termos, pontos_criticos, segunda_derivada);
-        }
+    const { termos } = nova_funcao();
+    funcoes.push(termos);
+    
+    console.log(`\n===== Análise da função =====`);
+    console.log(`Termos:`, termos);
+    
+    // Derivadas
+    const derivada = derivadaString(termos);
+    const derivadaFormatada = formatarDerivada(derivada);
+    console.log(`Primeira derivada: f'(x) = ${derivadaFormatada}`);
+    
+    const segunda_derivada = derivadaString(derivada);
+    const segundaDerivadaFormatada = formatarDerivada(segunda_derivada);
+    console.log(`Segunda derivada: f''(x) = ${segundaDerivadaFormatada}`);
+    
+    // Encontrar pontos críticos
+    const pontos_criticos = encontrar_pontos_criticos(derivada);
+    
+    if (pontos_criticos.length === 0) {
+        console.log("Nenhum ponto crítico encontrado no intervalo [-10, 10].\n");
+    } else {
+        console.log(`\nPontos críticos encontrados:`);
+        classificar_ponto_critico(termos, pontos_criticos, segunda_derivada);
     }
 } else if (tipo === 2) {
-    for (let i = 0; i < qtdFuncao; i++) {
-        const { termos, funcao } = nova_funcao();
-        funcoes.push(termos);
-        
-        console.log(`\n===== Análise da ${i + 1}º função =====`);
-        console.log(`Termos:`, termos);
-        
-        // Integral
-        const integral = integralString(termos);
-        const integralFormatada = formatarIntegral(integral);
-        console.log(`Integral primitiva: ∫(${funcao})dx = ${integralFormatada}`);
-    }
+    const { termos, funcao } = nova_funcao();
+    funcoes.push(termos);
+    
+    console.log(`\n===== Análise da função =====`);
+    console.log(`Termos:`, termos);
+    
+    // Integral
+    const integral = integralString(termos);
+    const integralFormatada = formatarIntegral(integral);
+    console.log(`Integral primitiva: ∫(${funcao})dx = ${integralFormatada} + C`);
 }
