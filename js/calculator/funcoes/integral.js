@@ -65,7 +65,7 @@ function integralString(termosStr) {
 
         // Constante: número puro
         } else if (/^-?\d+(\.\d+)?$/.test(termo)) {
-            return '0';
+            return `${termo}x`;
         }
 
         return `Não reconhecido: ${termo}`;  

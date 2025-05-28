@@ -10,6 +10,11 @@ let qtdFuncao = parseInt(prompt("Digite a quantidade de funções a serem avalia
 
 const tipo = parseInt(prompt("Escolha derivar = 1 ou integrar = 2: "));
 
+if (tipo != 1 && tipo != 2) {
+    console.log("Tipo inválido. Digite apenas 1 ou 2 para definir o tipo. ");
+    process.exit(1);
+}
+
 function nova_funcao() {
     console.log("\nFunção de exemplo: f(x) = x^3 - 3x + 2e^x");
     let funcao = prompt("Entre com a função: f(x) = ");
@@ -38,13 +43,13 @@ function nova_funcao() {
     }
 
     termos.push(funcao.slice(inicio));
-    return termos;
+    return { termos, funcao };
 }
 
 let funcoes = [];
 if (tipo === 1) {
     for (let i = 0; i < qtdFuncao; i++) {
-        const termos = nova_funcao();
+        const { termos } = nova_funcao();
         funcoes.push(termos);
         
         console.log(`\n===== Análise da ${i + 1}º função =====`);
@@ -71,7 +76,7 @@ if (tipo === 1) {
     }
 } else if (tipo === 2) {
     for (let i = 0; i < qtdFuncao; i++) {
-        const termos = nova_funcao();
+        const { termos, funcao } = nova_funcao();
         funcoes.push(termos);
         
         console.log(`\n===== Análise da ${i + 1}º função =====`);
@@ -80,8 +85,6 @@ if (tipo === 1) {
         // Integral
         const integral = integralString(termos);
         const integralFormatada = formatarIntegral(integral);
-        console.log(`Integral primitiva: ∫(x)dx = ${integralFormatada}`);
+        console.log(`Integral primitiva: ∫(${funcao})dx = ${integralFormatada}`);
     }
-} else {
-    console.log("Tipo inválido.");
 }
