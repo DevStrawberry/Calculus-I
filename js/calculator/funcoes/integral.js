@@ -1,5 +1,5 @@
 function integralString(termosStr) {
-    function intergralTermo(termo, sinal = 1) {
+    function integrarTermo(termo, sinal = 1) {
         termo = termo.trim();
 
         // Polinomial: ax^n ou x^n
@@ -65,7 +65,7 @@ function integralString(termosStr) {
 
         // Constante: número puro
         } else if (/^-?\d+(\.\d+)?$/.test(termo)) {
-            return `${termo}x`;
+            return `${parseFloat(termo) * sinal}x`;
         }
 
         return `Não reconhecido: ${termo}`;  
@@ -110,7 +110,7 @@ function integralString(termosStr) {
                 termoLimpo = termo.slice(1);
             }
             
-            return derivarTermo(termoLimpo, sinal);
+            return integrarTermo(termoLimpo, sinal);
         });
     }
 
@@ -131,7 +131,7 @@ function integralString(termosStr) {
             return processarSubtermos(conteudo, sinal);
         }
 
-        return [intergralTermo(termo, sinal)];
+        return [integrarTermo(termo, sinal)];
     });
 }
 
